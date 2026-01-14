@@ -19,9 +19,30 @@ Each module will have its own `package.json` file - and there is likely a top-le
 - Try to split Large components into smaller ones if it makes sense to, and if there are potentially reusable aspects of the component, or if you can separate out logic for sub-components to improve clarity.
 - Always favour using an existing component for something if one exists - you should check - and consider even modifying components slightly to fit more use cases if that makes sense in the context of the problem.
 
-# Understanding Complicated Frameworks with CONTEXT7 MCP (IF YOU DON'T HAVE ACCESS TO THI'S TELL THE USER)
-- Web is complicated and often requires importing tens or even hundreds of packages. Good developers look at documentation before implementing to ensure they are using best practices.
-- You, as a good developer, should use the CONTEXT7 MCP whenever you need to look into any framework or library at all. Never, ever, guess syntax or best practices and always look up the appropriate version of the library as per the version specified in `package.json`.
+# Understanding Complicated Frameworks with CONTEXT7 MCP (IF YOU DON'T HAVE ACCESS TO THIS TELL THE USER)
+
+**CRITICAL: You MUST use Context7 BEFORE writing any code that involves external libraries or frameworks. This is not optional. Do not wait to be asked.**
+
+## When to use Context7 (MANDATORY):
+- Before implementing ANY feature using TanStack Router, TanStack Query, React, Zod, or any other library
+- Before using any hook, component, or API from an external package
+- When you're about to write syntax for a library - STOP and look it up first
+- When fixing bugs related to library usage
+- When refactoring code that uses external dependencies
+
+## Process:
+1. BEFORE writing code, identify which libraries/frameworks are involved
+2. Check `package.json` for the version being used
+3. Query Context7 for the correct syntax and best practices for that version
+4. Only then proceed with implementation
+
+## Anti-patterns (DO NOT DO THESE):
+- Writing library code from memory without checking Context7
+- Only checking Context7 when the user explicitly asks
+- Assuming you know the correct API/syntax without verification
+- Implementing first, then checking documentation if it fails
+
+Good developers look at documentation BEFORE implementing, not after problems arise.
 
 # Tanstack Router Specific
 - Tanstack router gives you the option to get parameters like `isError` from queries. Ideally, instead of doing this, handle these cases inside the query itself by using the `onError` and `onSuccess` handlers when appropriate. Note this is not always reasonable, but often with things like `useMutation` it is very beneficial.
